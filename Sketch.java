@@ -11,8 +11,8 @@ import processing.core.PApplet;
 
 public class Sketch extends PApplet {
 
-  float randWidth = random(1, 800);
-  float randHeight = random(1, 800);
+  float randWidth = random(100, 600);
+  float randHeight = random(100, 600);
 	
 	
   /**
@@ -30,7 +30,25 @@ public class Sketch extends PApplet {
    */
   
   public void setup() {
-    background(163,203,240);
+    if (randWidth <= 400 && randHeight <= 400) {
+      background(163,203,240);
+    }
+
+    else if (randWidth >= 400 && randHeight <= 400) {
+      background(136, 196, 236);
+    }
+
+    else if (randWidth <= 400 && randHeight >= 400) {
+      background(145, 175, 217);
+    }
+
+    else if (randWidth >= 400 && randHeight >= 400) {
+      background(136, 202, 210);
+    }
+    
+    else {
+      background(0, 18, 24);
+    }
   }
 
   /**
