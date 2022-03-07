@@ -3,19 +3,16 @@
 Name:		Sketch.java
 Purpose: 5.4 Processing Task 3 - Creating Variables, If Statements
 Author:	Chan. A
-Created:	date in 03/05/2022
+Created:	date in 03/07/2022
 -------------------------------------------------------------------------
 */
 
 import processing.core.PApplet;
-import processing.core.PFont;
 
 public class Sketch extends PApplet {
 
   float randWidth = random(100, 600);
   float randHeight = random(100, 600);
-
-  public PFont font;
 
 	
   /**
@@ -52,15 +49,13 @@ public class Sketch extends PApplet {
     else {
       background(0, 18, 24);
     }
-
-    font = createFont("Lato Bold", 100, true);
-    textFont(font);
-    textAlign(CENTER, BASELINE);
   }
-  
+  /*
   int hour = hour();
   int minute = minute();
   int second = second();
+  */
+
   /**
    * Called repeatedly, anything drawn to the screen goes here
    */
@@ -69,28 +64,8 @@ public class Sketch extends PApplet {
 
    // Reference Point: 225, 325
 
-   // draw ground
-
-   noStroke();
-
-   fill(113, 81, 55);
-   rect(randWidth - 225, randHeight + 325, 800, 200);
-   grass(randWidth -225, randHeight + 325);
-   grass(randWidth - 5, randHeight + 325);
-   grass(randWidth + 175, randHeight + 325);
-   grass(randWidth + 375, randHeight + 325);
-   grass(randWidth + 525, randHeight + 325);
-
-   fill(147, 192, 97);
-   rect(randWidth - 225, randHeight + 325, 800, 45);
-
-
    stroke(0, 0, 0);
    strokeWeight(1);
-
-   // draw sun 
-   fill(255, 255, 35);
-   ellipse(randWidth - 125, randHeight -125, 75, 75);
 
    // draw house
    fill(168, 97, 87);
@@ -119,35 +94,52 @@ public class Sketch extends PApplet {
    fill(70, 71, 77);
    ellipse(randWidth + 150, randHeight + 240, 15, 15);
 
-   // draw clouds
-   noStroke();
-   fill(255, 255, 255);
-   ellipse(randWidth + 75, randHeight - 275, 100, 50);
-   ellipse(randWidth + 125, randHeight - 255, 100, 50);
-
-   ellipse(randWidth + 325, randHeight - 275, 100, 50);
-   ellipse(randWidth + 375, randHeight -255, 100, 50);
-   ellipse(randWidth + 405, randHeight - 275, 100, 50);
-
    // Clock format
+   int hour = hour();
+   int minute = minute();
+   int second = second();
+
    String time = hour + ":" + minute + ":" + second;
 
    // AM or PM conditional
    if (hour > 12) {
 
      time = hour - 12 + ":" + minute + ":" + second + " PM";
-     text(time, width/2, height/2);
+
+     fill(255, 250, 250);
+     rect(100, 75, 300, 100);
+
+     fill(0, 0, 0);
+     textSize(50);
+
+     text(time, 125, 150);
    }
+
    else if (hour < 12) {
 
      time = hour + ":" + minute + ":" + second + " AM";
-     text(time, width/2, height/2);
-   }
-   else if (hour == 0) {
-     time = "12: " + minute + second + ":" + " AM";
-     text(time, width/2, height/2);
+
+     fill(255, 250, 250);
+     rect(200, 200, 275, 75);
+
+     fill(0, 0, 0);
+     textSize(50);
+
+     text(time, 200, 225);
    }
 
+   else if (hour == 0) {
+
+     time = "12: " + minute + "." + second + ":" + " AM";
+     
+     fill(255, 250, 250);
+     rect(200, 200, 275, 75);
+
+     fill(0, 0, 0);
+     textSize(50);
+
+     text(time, 200, 225);
+   }
 
   }
 
