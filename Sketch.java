@@ -8,12 +8,15 @@ Created:	date in 03/05/2022
 */
 
 import processing.core.PApplet;
+import processing.core.PFont;
 
 public class Sketch extends PApplet {
 
   float randWidth = random(100, 600);
   float randHeight = random(100, 600);
-	
+
+  public PFont font;
+
 	
   /**
    * Called once at the beginning of execution, put your size all in this method
@@ -30,34 +33,41 @@ public class Sketch extends PApplet {
    */
   
   public void setup() {
-    if (randWidth <= 400 && randHeight <= 400) {
-      background(163,203,240);
+    if (randWidth < 400 && randHeight < 400) {
+      background(0, 170, 255);
     }
 
-    else if (randWidth >= 400 && randHeight <= 400) {
-      background(136, 196, 236);
+    else if (randWidth > 400 && randHeight < 400) {
+      background(170, 0, 255);
     }
 
-    else if (randWidth <= 400 && randHeight >= 400) {
-      background(145, 175, 217);
+    else if (randWidth < 400 && randHeight > 400) {
+      background(255, 0, 170);
     }
 
-    else if (randWidth >= 400 && randHeight >= 400) {
-      background(136, 202, 210);
+    else if (randWidth > 400 && randHeight > 400) {
+      background(38, 255, 0);
     }
     
     else {
       background(0, 18, 24);
     }
-  }
 
+    font = createFont("Lato Bold", 100, true);
+    textFont(font);
+    textAlign(CENTER, BASELINE);
+  }
+  
   /**
    * Called repeatedly, anything drawn to the screen goes here
    */
+  
   public void draw() {
 
+   // Reference Point: 225, 325
+
    // draw ground
-    //225, 325
+
    noStroke();
 
    fill(113, 81, 55);
@@ -116,7 +126,24 @@ public class Sketch extends PApplet {
    ellipse(randWidth + 375, randHeight -255, 100, 50);
    ellipse(randWidth + 405, randHeight - 275, 100, 50);
 
+   // Clock format
+   String time = hour() + ":" + minute() + second();
 
+   // AM or PM conditional
+   if (hour() > 12) {
+
+     time = hour() - 12 + ":" + minute() + second()+ " PM";
+     text(time, width/2, height/2);
+   }
+   else if (hour() < 12){
+
+     time = hour() + ":" + minute() + second() + " AM";
+     text(time, width/2, height/2);
+   }
+   else if (hour() == 0){
+     time = "12: " + minute() + second() + " AM";
+     text(time, width/2, height/2);
+   }
 
 
   }
