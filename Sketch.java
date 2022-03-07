@@ -33,19 +33,19 @@ public class Sketch extends PApplet {
    */
   
   public void setup() {
-    if (randWidth < 400 && randHeight < 400) {
+    if (randWidth <= 400 && randHeight <= 400) {
       background(0, 170, 255);
     }
 
-    else if (randWidth > 400 && randHeight < 400) {
+    else if (randWidth >= 400 && randHeight <= 400) {
       background(170, 0, 255);
     }
 
-    else if (randWidth < 400 && randHeight > 400) {
+    else if (randWidth <= 400 && randHeight >= 400) {
       background(255, 0, 170);
     }
 
-    else if (randWidth > 400 && randHeight > 400) {
+    else if (randWidth >= 400 && randHeight >= 400) {
       background(38, 255, 0);
     }
     
@@ -58,6 +58,9 @@ public class Sketch extends PApplet {
     textAlign(CENTER, BASELINE);
   }
   
+  int hour = hour();
+  int minute = minute();
+  int second = second();
   /**
    * Called repeatedly, anything drawn to the screen goes here
    */
@@ -127,21 +130,21 @@ public class Sketch extends PApplet {
    ellipse(randWidth + 405, randHeight - 275, 100, 50);
 
    // Clock format
-   String time = hour() + ":" + minute() + second();
+   String time = hour + ":" + minute + ":" + second;
 
    // AM or PM conditional
-   if (hour() > 12) {
+   if (hour > 12) {
 
-     time = hour() - 12 + ":" + minute() + second()+ " PM";
+     time = hour - 12 + ":" + minute + ":" + second + " PM";
      text(time, width/2, height/2);
    }
-   else if (hour() < 12){
+   else if (hour < 12) {
 
-     time = hour() + ":" + minute() + second() + " AM";
+     time = hour + ":" + minute + ":" + second + " AM";
      text(time, width/2, height/2);
    }
-   else if (hour() == 0){
-     time = "12: " + minute() + second() + " AM";
+   else if (hour == 0) {
+     time = "12: " + minute + second + ":" + " AM";
      text(time, width/2, height/2);
    }
 
