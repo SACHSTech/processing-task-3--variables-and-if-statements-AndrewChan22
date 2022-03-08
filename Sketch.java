@@ -107,7 +107,7 @@ public class Sketch extends PApplet {
      time = hour - 12 + ":" + minute + ":" + second + " PM";
 
      fill(255, 250, 250);
-     rect(100, 75, 300, 100);
+     rect(100, 75, 325, 100);
 
      fill(0, 0, 0);
      textSize(50);
@@ -120,12 +120,12 @@ public class Sketch extends PApplet {
      time = hour + ":" + minute + ":" + second + " AM";
 
      fill(255, 250, 250);
-     rect(200, 200, 275, 75);
+     rect(100, 75, 325, 100);
 
      fill(0, 0, 0);
      textSize(50);
 
-     text(time, 200, 225);
+     text(time, 125, 150);
    }
 
    else if (hour == 0) {
